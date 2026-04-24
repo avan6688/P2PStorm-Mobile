@@ -309,12 +309,13 @@ class P2PMediaLoader(
         statsCollector?.stop()
         statsCollector = null
 
-        manifestParser?.reset()
+        kotlinx.coroutines.runBlocking {
+            manifestParser?.reset()
+            engineStateManager.reset()
+        }
         manifestParser = null
 
         playbackProvider = null
-
-        engineStateManager.reset()
         eventEmitter.removeAllListeners()
 
         // Cancel scope after cleanup is complete
