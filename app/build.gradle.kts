@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.novage.demo"
+    namespace = "com.p2pstorm.demo"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.novage.demo"
+        applicationId = "com.p2pstorm.demo"
         minSdk = 24
         targetSdk = 36
 

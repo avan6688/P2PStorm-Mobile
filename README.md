@@ -2,8 +2,8 @@
 
 ![Platform: Android](https://img.shields.io/badge/platform-Android-blue) 
 [![Kotlin](https://img.shields.io/badge/kotlin-2.2.20-blue.svg?logo=kotlin)](https://kotlinlang.org) 
-[![JitPack](https://jitpack.io/v/Novage/p2p-media-loader-mobile.svg)](https://jitpack.io/#Novage/p2p-media-loader-mobile)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Novage/p2p-media-loader-mobile/check-build.yml)](https://github.com/Novage/p2p-media-loader-mobile/actions) 
+[![JitPack](https://jitpack.io/v/avan6688/P2PStorm-Mobile.svg)](https://jitpack.io/#avan6688/P2PStorm-Mobile)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/avan6688/P2PStorm-Mobile/check-build.yml)](https://github.com/avan6688/P2PStorm-Mobile/actions) 
 
 A Kotlin library for peer-to-peer media loading, designed to enhance streaming performance and reduce server load. Seamlessly integrate P2PML into your Android application with minimal setup.
 
@@ -36,7 +36,7 @@ dependencyResolutionManagement {
 Add the following implementation line to your **`build.gradle`** (app module):
 
 ```kotlin
-implementation("com.github.Novage:p2p-media-loader-mobile:main-SNAPSHOT")
+implementation("com.github.avan6688:P2PStorm-Mobile:main-SNAPSHOT")
 ```
 
 ### Step 3: Configure the AndroidManifest
@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
         private const val MANIFEST_URL = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
         
         // JSON configuration for P2P Media Loader
-        // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
+        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
         private const val CORE_CONFIG_JSON = "{\"swarmId\":\"TEST_KOTLIN\"}"
         
         // Port on which the P2P server will run
@@ -184,14 +184,14 @@ class MainActivity : ComponentActivity() {
     override fun onStop() {
         super.onStop()
         // Disable P2P features when the activity stops
-        // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
         p2pml.applyDynamicConfig("{\"isP2PDisabled\": true}")
     }
 
     override fun onRestart() {
         super.onRestart()
         // Re-enable P2P features when the activity restarts
-        // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
         p2pml.applyDynamicConfig("{\"isP2PDisabled\": false}")
     }
 
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int SERVER_PORT = 8081;
 
     // JSON configuration for P2P Media Loader
-    // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
+    // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
     private static final String CORE_CONFIG_JSON = "{\"swarmId\":\"TEST_KOTLIN\"}";
 
     private ExoPlayer exoPlayer;
@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         // Disable P2P features when the activity stops
         if (p2pml != null) {
-            // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+            // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
             p2pml.applyDynamicConfig("{ \"isP2PDisabled\": false }");
         }
     }
@@ -333,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         // Re-enable P2P features when the activity restarts
         if (p2pml != null) {
-            // See https://novage.github.io/p2p-media-loader/docs/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+            // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
             p2pml.applyDynamicConfig("{ \"isP2PDisabled\": true }");
         }
     }

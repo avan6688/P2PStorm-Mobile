@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.novage.p2pml"
+    namespace = "com.p2pstorm.sdk"
     compileSdk = 36
 
     defaultConfig {
@@ -66,14 +66,14 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
 
-                groupId = "com.novage"
+                groupId = "com.p2pstorm"
                 artifactId = "p2pml"
                 version = "0.0.1-SNAPSHOT"
 
                 pom {
                     name.set("P2P Media Loader Mobile")
                     description.set("A sample Kotlin/Android library for P2P media streaming")
-                    url.set("https://github.com/Novage/p2p-media-loader-mobile")
+                    url.set("https://github.com/avan6688/P2PStorm-Mobile")
 
                     licenses {
                         license {
@@ -83,15 +83,15 @@ afterEvaluate {
                     }
 
                     scm {
-                        connection.set("scm:git:git://github.com/Novage/p2p-media-loader-mobile.git")
-                        developerConnection.set("scm:git:ssh://github.com:Novage/p2p-media-loader-mobile.git")
-                        url.set("https://github.com/Novage/p2p-media-loader-mobile")
+                        connection.set("scm:git:git://github.com/avan6688/P2PStorm-Mobile.git")
+                        developerConnection.set("scm:git:ssh://github.com:avan6688/P2PStorm-Mobile.git")
+                        url.set("https://github.com/avan6688/P2PStorm-Mobile")
                     }
 
                     developers {
                         developer {
-                            id.set("DimaDemchenko")
-                            name.set("Dmytro Demchenko")
+                            id.set("avan6688")
+                            name.set("P2PStorm Team")
                         }
                     }
                 }
@@ -101,7 +101,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/Novage/p2p-media-loader-mobile")
+                url = uri("https://maven.pkg.github.com/avan6688/P2PStorm-Mobile")
                 credentials {
                     username = System.getenv("GITHUB_ACTOR") ?: ""
                     password = System.getenv("GITHUB_TOKEN") ?: ""
