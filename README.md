@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
         private const val MANIFEST_URL = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
         
         // JSON configuration for P2P Media Loader
-        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
+        // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
         private const val CORE_CONFIG_JSON = "{\"swarmId\":\"TEST_KOTLIN\"}"
         
         // Port on which the P2P server will run
@@ -184,14 +184,14 @@ class MainActivity : ComponentActivity() {
     override fun onStop() {
         super.onStop()
         // Disable P2P features when the activity stops
-        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+        // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
         p2pml.applyDynamicConfig("{\"isP2PDisabled\": true}")
     }
 
     override fun onRestart() {
         super.onRestart()
         // Re-enable P2P features when the activity restarts
-        // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+        // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
         p2pml.applyDynamicConfig("{\"isP2PDisabled\": false}")
     }
 
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int SERVER_PORT = 8081;
 
     // JSON configuration for P2P Media Loader
-    // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
+    // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.CoreConfig.html
     private static final String CORE_CONFIG_JSON = "{\"swarmId\":\"TEST_KOTLIN\"}";
 
     private ExoPlayer exoPlayer;
@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         // Disable P2P features when the activity stops
         if (p2pml != null) {
-            // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+            // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
             p2pml.applyDynamicConfig("{ \"isP2PDisabled\": false }");
         }
     }
@@ -333,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         // Re-enable P2P features when the activity restarts
         if (p2pml != null) {
-            // See https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
+            // See https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html
             p2pml.applyDynamicConfig("{ \"isP2PDisabled\": true }");
         }
     }

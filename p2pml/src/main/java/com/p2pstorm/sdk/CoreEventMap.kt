@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 /**
  * CoreEventMap is a sealed class that represents the different types of events that can be emitted by the P2P core.
  *
- * See [P2P Media Loader CoreEventMap](https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreEventMap.html)
+ * See [P2P Media Loader CoreEventMap](https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.CoreEventMap.html)
  */
 sealed class CoreEventMap<T> {
     /**

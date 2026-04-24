@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
  *
  * @param onP2PReadyCallback Callback invoked when the P2P engine is ready for use
  * @param onP2PReadyErrorCallback Callback invoked when an error occurs
- * @param coreConfigJson Sets core P2P configurations. See [P2PML Core Config](https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.CoreConfig.html)
+ * @param coreConfigJson Sets core P2P configurations. See [P2PML Core Config](https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.CoreConfig.html)
  * JSON string with core configurations. Default: empty string (uses default config)
  *
  * @param serverPort Port number for the local server. Default: 8080
@@ -181,7 +181,7 @@ class P2PMediaLoader(
 
         // Stats collector (init before server so it can be passed to SegmentHandler)
         if (appKey.isNotEmpty()) {
-            val url = statsReportUrl.ifEmpty { "https://api.p2pstorm.cn/v1/stats" }
+            val url = statsReportUrl.ifEmpty { "https://api.p2pstorm.vip/v1/stats" }
             statsCollector = P2PStatsCollector(appKey, url, scope!!)
             statsCollector?.start()
 
@@ -230,7 +230,7 @@ class P2PMediaLoader(
      * Applies dynamic core configurations to the `P2PMediaLoader` engine.
      *
      * @param dynamicCoreConfigJson A JSON string containing dynamic core configurations for the P2P engine.
-     * Refer to the [DynamicCoreConfig Documentation](https://docs.p2pstorm.cn/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html).
+     * Refer to the [DynamicCoreConfig Documentation](https://docs.p2pstorm.vip/v2.1.0/types/p2p-media-loader-core.DynamicCoreConfig.html).
      * @throws IllegalStateException if P2PMediaLoader is not started
      */
     fun applyDynamicConfig(dynamicCoreConfigJson: String) {
