@@ -46,7 +46,12 @@ class P2PStatsCollector(
     val peersCount = AtomicInteger(0)
 
     private var reportJob: Job? = null
-    private val httpClient = OkHttpClient()
+    private val httpClient = OkHttpClient.Builder()
+        .connectTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+        .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+        .writeTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+        .callTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
+        .build()
 
     fun start() {
         if (reportJob != null) return

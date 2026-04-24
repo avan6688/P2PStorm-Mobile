@@ -130,6 +130,10 @@ internal class WebMessageProtocol(
     private fun handleSegmentIdMessage(requestId: String) {
         val requestIdToInt =
             requestId.toIntOrNull() ?: throw IllegalStateException("Invalid request ID")
+        if (incomingRequestIdQueue.size >= MAX_PENDING_REQUESTS) {
+            Logger.e(TAG, "Request ID queue full ($MAX_PENDING_REQUESTS), dropping requestId: $requestIdToInt")
+            return
+        }
         incomingRequestIdQueue.add(requestIdToInt)
     }
 
@@ -226,5 +230,6 @@ internal class WebMessageProtocol(
 
     companion object {
         private const val TAG = "WebMessageProtocol"
+        private const val MAX_PENDING_REQUESTS = 200
     }
 }
