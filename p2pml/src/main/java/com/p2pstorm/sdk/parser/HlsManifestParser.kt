@@ -145,7 +145,7 @@ internal class HlsManifestParser(
 
         val initialStartTime = getInitialStartTime(isStreamLive, mediaPlaylist)
         currentSegmentRuntimeIds.clear()
-        lastSearchIndex = 0
+        var searchIndex = 0
         mediaPlaylist.segments.forEachIndexed { index, segment ->
             if (segment.initializationSegment != null) {
                 initializationSegments.add(segment.initializationSegment!!)
@@ -156,7 +156,7 @@ internal class HlsManifestParser(
             val runtimeUrl = segment.getRuntimeUrl(manifestUrl)
             currentSegmentRuntimeIds.add(runtimeUrl)
 
-            processSegment(segment, manifestUrl, updatedManifestBuilder)
+            searchIndex = processSegment(segment, manifestUrl, updatedManifestBuilder, searchIndex)
 
             val newSegment =
                 addNewSegment(manifestUrl, segmentIndex, initialStartTime, segment)
@@ -308,13 +308,12 @@ internal class HlsManifestParser(
         )
     }
 
-    private var lastSearchIndex = 0
-
     private fun processSegment(
         segment: HlsMediaPlaylist.Segment,
         variantUrl: String,
         manifestBuilder: StringBuilder,
-    ) {
+        lastSearchIndex: Int,
+    ): Int {
         val segmentUriInManifest =
             findUrlInManifest(
                 manifestBuilder.toString(),
@@ -345,13 +344,12 @@ internal class HlsManifestParser(
         }
         if (startIndex == -1) {
             Logger.e(TAG, "URL not found in manifest: ${segment.url}")
-            return
+            return lastSearchIndex
         }
         val endIndex = startIndex + segmentUriInManifest.length
-        val lengthDiff = newUrl.length - segmentUriInManifest.length
 
         manifestBuilder.replace(startIndex, endIndex, newUrl)
-        lastSearchIndex = startIndex + newUrl.length
+        return startIndex + newUrl.length
     }
 
     private fun replaceUrlInManifest(
@@ -404,7 +402,6 @@ internal class HlsManifestParser(
             streamSegments.clear()
             updateStreamParams.clear()
             currentSegmentRuntimeIds.clear()
-            lastSearchIndex = 0
         }
     }
 

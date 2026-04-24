@@ -30,8 +30,12 @@ private fun escapeForJs(json: String): String {
     return json
         .replace("\\", "\\\\")
         .replace("'", "\\'")
+        .replace("\"", "\\\"")
         .replace("\n", "\\n")
         .replace("\r", "\\r")
+        .replace("\t", "\\t")
+        .replace("`", "\\`")
+        .replace("/", "\\/")
 }
 
 @SuppressLint("JavascriptInterface")
@@ -50,6 +54,9 @@ internal class WebViewManager(
         WebView(context).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
+            settings.allowFileAccess = false
+            settings.allowContentAccess = false
+            settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW
             webViewClient = WebViewClientCompat()
             webChromeClient = object : WebChromeClient() {
                 override fun onConsoleMessage(consoleMessage: ConsoleMessage?): Boolean {
